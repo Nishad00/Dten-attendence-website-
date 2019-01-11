@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--  Code for logo started  -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/logo-nestimatic.png">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>D-Ten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--styles-->
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/index.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">   
+        <!--JQuery-->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/js/attend.js"></script>
+
+    </head>
+    <body>
+        <div class="main">
+                <center>
+                <h1 id="floatLogo" >D-Ten</h1>
+                <p class="tagline" id="tagline" >Welcome to online attedance !</p>
+                <div class="blue-line"></div>
+            </center>
+
+            
+            <div id="sign-in-div" >
+                <br> 
+                   <center>
+                       <button>Delete this Subject</button>
+                       <button>Download Excel Sheet</button>
+                       <button id="editattendbutton">Edit Attedance</button>
+                    </center>
+                
+                    <div id="attedancediv">
+                    <p style="display: inline;">{{atd.name}} {{atd.department}} {{atd.division}} {{atd.typeofsubject}}</p>
+                    <ul>
+                        <li>Time : <input class="timeinput" type="text" value="{{atd.time}}"> &nbsp; To &nbsp; <input type="text" value="{{atd.time2}}"></li>
+                        <li>Date : <input type="text" value="{{atd.date}}" > </li>
+                    </ul>
+
+
+
+                    <div class="attendblock">
+                            <form action="absent" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" style="display: none;" name="name" value="{{i.name}}">
+                                    <input type="text" style="display: none;" name="division" value="{{i.division}}">
+                                    <input type="text" style="display: none;" name="department" value="{{i.department}}">
+                                    <input type="text" style="display: none;" name="type" value="{{i.type}}">
+                                    <input type="text" style="display: none;" name="time" value="{{atd.time}}:{{atd.time2 }}">
+                                    <input type="text" style="display: none;" name="date" value="{{i.date}}">
+                                    <p style="display: inline;">Enter Absent Numbers : <input type="text" name="absent"> </p>  
+                    <input type="submit" value="Submit" id="submitbutton">
+                    <p style="display: inline;">(Tip: Submit blank if all students are Present) </p>
+                </form>
+            </div>
+                <center> <br>
+                        <p style="display: inline;">OR</p>       
+                  <br> <br>  </center>
+                  
+                <div class="attendblock">
+                        <form action="present" method="post">
+                                {% csrf_token %}
+                                <input type="text" style="display: none;" name="name" value="{{i.name}}">
+                                <input type="text" style="display: none;" name="division" value="{{i.division}}">
+                                <input type="text" style="display: none;" name="department" value="{{i.department}}">
+                                <input type="text" style="display: none;" name="type" value="{{i.type}}">
+                                <input type="text" style="display: none;" name="time" value="{{atd.time}}:{{atd.time2}}">
+                                <input type="text" style="display: none;" name="date" value="{{i.date}}">
+                                             <p style="display: inline;">Enter Present Numbers : <input type="text" name="present"> </p> 
+                <input type="submit" value="Submit" id="submitbutton">
+                    <p style="display: inline;">(Tip: Submit blank if all students are Absent) </p>
+                </form>
+            </div>
+                    
+<br><br>                    
+</div>
+<div id="editattenddiv">
+                <p style="display: inline;">Edit Attedance by Date : </p>
+
+                <p style="display: inline;">Select Date : <input type="date"> </p>
+                <button id="canceleditdiv">Cancel</button>
+                
+        <br><br>  
+                <div class="attendblock">
+                <p style="display: inline;">Edit Absent Numbers : <input type="text"> </p>  
+                <a href="teacher"><button>Submit</button></a> <br>
+                <p style="display: inline;">(Tip: Submit blank if all students were Present) </p>
+            </div>
+            <center> <br>
+                    <p style="display: inline;">OR</p>       
+              <br> <br>  </center>
+              
+            <div class="attendblock">
+                <p style="display: inline;">Edit Present Numbers : <input type="text"> </p> 
+                <a href="teacher"><button>Submit</button></a> <br>
+                <p style="display: inline;">(Tip: Submit blank if all students were Absent) </p>
+            </div>
+        </div>
+              </div>
+        </div>
+    </body>
+</html>

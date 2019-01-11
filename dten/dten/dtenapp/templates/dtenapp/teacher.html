@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--  Code for logo started  -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/logo-nestimatic.png">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>D-Ten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- styles
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/index.css" /> -->
+        
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/index.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">   
+        <!--JQuery-->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/js/teacher.js"></script>
+
+    </head>
+    <body>
+        <div class="main">
+                <center>
+                        <h1 id="floatLogo" >D-Ten</h1>
+                        <p class="tagline" id="tagline" >Don't be detained 😃 !</p>
+                        <div class="blue-line"></div>
+                        <br>
+                        <button>Approval Section</button> &nbsp;
+                        <button id="addsubjectbutton">Add Subject</button> &nbsp;
+                        <button id="adddivbutton">Add Division</button> &nbsp;
+                    </center>        
+            <div id="sign-in-div">
+        
+                <div>
+
+                    <p style="display: inline;">Your Division : </p> 
+                    <ul>
+                        <li>   {{divdict.name}}
+                            {{divdict.department}}
+                         </li>
+                    </ul>
+                </div>
+        
+               <p style="display: inline;">Your Subjects with Divisions : </p>
+                    <ul>
+                       {% for i in allsub %}
+                        <li>
+                        <form action="attend" method="post">
+                            {% csrf_token %}
+                            <input type="text" style="display: none;" name="name" value="{{i.name}}">
+                            <input type="text" style="display: none;" name="division" value="{{i.division}}">
+                            <input type="text" style="display: none;" name="department" value="{{i.department}}">
+                            <input type="text" style="display: none;" name="type" value="{{i.type}}">
+                            <input type="submit" value="{{i.name}} {{i.department}} {{i.division}} {{i.type}}" id="submitbutton">
+                        </form>    </li>
+                
+                        {% endfor %}
+                    </ul>
+                
+                  
+                    <div id="addsubjectdiv">
+                        <form action="subject" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="mailid" id="hitit" style="display: none">
+            
+                            <p style="display: inline;">Add Subject with Division : </p>
+                    <ul>
+                            <li>Select Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select name="department">
+                                    <option value="computer">Computer Engineering</option>
+                                    <option value="it">Information Technology</option>
+                                    <option value="mechanical">Mechanical Engineering</option>
+                                    <option value="civil">Civil Engineering</option>
+                                    <option value="eandtc">E&tc Engineering</option>
+                                    <option value="electionics">Electionics Engineering</option>
+                                    <option value="chemical">Chemical Engineering</option>
+                                    <option value="aeronotical">Aeronotical Engineering</option>
+                                    <option value="metallulargy">Metallulargy Engineering</option>
+                                    <option value="ddgm">Dress design and garment management</option>
+                                    <option value="electrical">Electical Engineering</option>
+                                </select></li>
+                                <li>Select Division &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select name="division">
+                                        <option value="B1">B1</option>
+                                        <option value="B2">B2</option>
+                                        <option value="B3">B3</option>
+                                        <option value="B4">B4</option>
+                                        <option value="B5">B5</option>
+                                        <option value="B6">B6</option>
+                                    </select>
+                                <li>Subject Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input name="subjectname" type="text"></li>
+                                <li>Select Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select id="type" name="type">
+                                    <option value="theory">Theory</option>
+                                    <option value="practical">Practical</option></select></li>
+                              </li>
+                              <li id="batchoption">Select Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select name="batch">
+                                  <option value="a">A</option>
+                                  <option value="b">B</option>
+                              </select></li>
+                              <li id="tlectures">Total Lectures will be &nbsp; : <input id="lectureinput" name="tlectures" type="number"></li>
+                              <li id="tpracticales">Total Practicals will be : <input id="practicalinput" name="tpracticales" type="number"></li>
+                              <br> <button>Add Subject</button> &nbsp;&nbsp;
+                              <button id="cancelsubeject" >Cancel</button>
+                        </ul></form>
+                    </div>
+
+                
+                <div id="adddivisiondiv">
+                    <form action="division" method="post">
+                        {% csrf_token %}
+                    
+                        <input type="text" name="mailid" id="hititdiv" style="display: none">
+                                 
+                    <p style="display: inline;">Your Division : </p> 
+                    <ul>
+                        <li>Department &nbsp;&nbsp;&nbsp; : <select name="department">
+                                <option value="computer">Computer Engineering</option>
+                                <option value="it">Information Technology</option>
+                                <option value="mechanical">Mechanical Engineering</option>
+                                <option value="civil">Civil Engineering</option>
+                                <option value="eandtc">E&tc Engineering</option>
+                                <option value="electionics">Electionics Engineering</option>
+                                <option value="chemical">Chemical Engineering</option>
+                                <option value="aeronotical">Aeronotical Engineering</option>
+                                <option value="metallulargy">Metallulargy Engineering</option>
+                                <option value="ddgm">Dress design and garment management</option>
+                                <option value="electrical">Electical Engineering</option>
+                            </select></li>
+                            <li>Division Name : <input type="text" name="subjectname"></li>
+                        <input style="display: none;" type="text" value="noenrolkey" name="enrolkey"> 
+                        <br>
+                        <button id="divadded">Add division</button> &nbsp;&nbsp;
+                        <button id="canceldiv">Cancel</button>  
+                    </ul>
+             </form>
+               </div>
+                    <br><br><br>
+            </div>
+        </div>
+        <script>
+            var ca = document.cookie.split('=');
+            document.getElementById("hitit").value = ca[2]
+            document.getElementById("hititdiv").value = ca[2]
+            alert(ca[2])
+    </script>
+
+    </body>
+</html>

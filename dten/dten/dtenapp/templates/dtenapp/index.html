@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--  Code for logo started  -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/logo-nestimatic.png">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>D-Ten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/index.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">   
+        <!--JQuery-->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/js/index.js"></script>
+        <script>
+                function setCookie() 
+                {
+                    document.cookie = "username" + "=" + document.getElementById('mailid').value + ";";
+                    alert("cookie set")
+                }
+            </script>        
+    </head>
+    <body>
+        <div class="main">
+                <center>
+                <h1 id="floatLogo" >D-Ten</h1>
+                <p class="tagline" id="tagline" >Welcome to online attedance !, you just need to</p>
+                <div class="blue-line"></div>
+            </center>    
+            </div> <br><br>
+            <form action="login" method="post">
+                {% csrf_token %}
+                E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="text" name="mailid" id="mailid"> <br><br>
+                Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="password" name="password" id="password"><br><br>
+                <input type="submit" onclick="setCookie()" name="submit" value="Sign-In" id="submitbutton">
+            </form>
+       
+            <p>or</p>
+            <form action="sign" method="post">
+                {% csrf_token %}
+                <p style="display: inline;">College&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p> 
+                <select name="college">
+                        <option value="mitaoe">MIT AOE, Alandi</option>
+                        <option value="gppune">GPPune, Pune</option>
+                    </select><br> <br>
+
+                    <p style="display: inline;"> Profession&nbsp;:</p>
+                    <select name="profession" id="profession">
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                    <br><br>
+                        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input type="text" name="name" id="name"> <br> <br>
+                        Surname&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="surname" id="surname"> <br><br>
+                        E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="text" name="mailid" id="mailid"> <br><br>
+                        Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="password" name="password" id="password"><br><br>
+                        <p style="display: inline;">Enrol key &nbsp;:</p>
+                            <input type="text" name="enrolkey">
+<br><br>                
+                <input type="submit" onclick="setCookie()" name="submit" value="Sign-UP" id="submitbutton">
+            </form>
+            
+            <!-- <form id="email-form" method="POST" action="info">
+                <input type="text" name="useremail" /> 
+                <input type="submit" value="submit" />
+            </form>
+     -->
+        </div>
+    </body>
+</html>

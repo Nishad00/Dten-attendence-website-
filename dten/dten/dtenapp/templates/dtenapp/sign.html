@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--  Code for logo started  -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/logo-nestimatic.png">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>D-Ten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles/index.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">   
+        <!--JQuery-->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/js/sign.js"></script>
+
+    </head>
+    <body>
+        <div class="main">
+            <center>
+                <h1 id="floatLogo" >D-Ten</h1>
+                <p class="tagline" id="tagline" >Don't be detained 😃 !</p>
+                <div class="blue-line"></div>
+            </center>
+            
+                
+            <form  action="stddata" method="post">
+                {% csrf_token %}        
+                <input type="text" name="mailid" id="hitit" style="display: none">
+                        <p style="display: inline;">Select your Department : </p>
+                        <select name="department" >
+                            <option value="computer">Computer Engineering</option>
+                            <option value="it">Information Technology</option>
+                            <option value="mechanical">Mechanical Engineering</option>
+                            <option value="civil">Civil Engineering</option>
+                            <option value="eandtc">E&tc Engineering</option>
+                            <option value="electionics">Electionics Engineering</option>
+                            <option value="chemical">Chemical Engineering</option>
+                            <option value="aeronotical">Aeronotical Engineering</option>
+                            <option value="metallulargy">Metallulargy Engineering</option>
+                            <option value="ddgm">DDGM</option>
+                            <option value="electrical">Electical Engineering</option>
+                        </select>
+                        <br> <br>
+              
+                        
+                        <div id="divisionblock">
+                        <p style="display: inline;">Select your Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+                        <select name="division">
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="B3">B3</option>
+                            <option value="B4">B4</option>
+                            <option value="B5">B5</option>
+                            <option value="B6">B6</option>
+                        </select>
+                        <br><br>
+                        <center>
+                                <input id="submitbutton" type="submit" value="Submit">
+            
+                                <!-- <a href="teacher"><button>Submit for teacher</button></a> 
+                                <a href="student"><button>Submit for student</button></a>  -->
+            
+                        </center>
+                    </form>
+                </div>
+         
+                </div>
+             <script>
+                var ca = document.cookie.split('=');
+                document.getElementById("hitit").value = ca[2]
+                alert(ca[2])
+        </script>
+
+    </body>
+</html>
